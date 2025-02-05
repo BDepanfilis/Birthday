@@ -40,7 +40,7 @@ h1 {
 }
 
 /* Image styling */
-.cake-container img {
+.cake img {
     width: 100%; /* Make images responsive */
     max-width: 300px; /* Limit max size of the images to 300px */
     height: auto; /* Maintain aspect ratio */
@@ -50,12 +50,12 @@ h1 {
 }
 
 /* Hover effect for images */
-.cake-container img:hover {
+.cake img:hover {
     transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Styling for text under each image */
-.cake-container p {
+.cake p {
     font-size: 20px;
     color: #555;
     margin-top: 10px;
@@ -84,4 +84,5 @@ h1 {
     background-size: 50px 50px; /* Heart patterns for background */
     opacity: 0.5; /* Subtle hearts */
 }
+
 
