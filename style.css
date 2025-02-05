@@ -1,31 +1,31 @@
 /* General body styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Default font */
     margin: 0;
     padding: 0;
-    background-color: #f8d5e0;
-    color: #333;
+    background-color: #f8d5e0; /* Light pink background */
+    color: #333; /* Dark text color for contrast */
     text-align: center;
-    background-image: url('https://www.transparenttextures.com/patterns/pale-pink-dots.png');
-    background-size: 20px 20px;
-    overflow-x: hidden;
+    background-image: url('https://www.transparenttextures.com/patterns/pale-pink-dots.png'); /* Optional cute heart pattern */
+    background-size: 20px 20px; /* Small dots pattern for a sweet feel */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Main heading style */
 h1 {
-    color: #f1a7c3;
+    color: #f1a7c3; /* Light pink shade for the header */
     margin-top: 50px;
     font-size: 36px;
-    font-family: 'Dancing Script', cursive;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    font-family: 'Dancing Script', cursive; /* Playful font for heading */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); /* Soft shadow for a dreamy effect */
 }
 
 /* Cake container wrapper to hold both cakes side-by-side */
 .cake-container-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centers cakes horizontally */
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows items to wrap in case of small screen sizes */
     padding: 20px;
     margin-top: 30px;
 }
@@ -35,23 +35,23 @@ h1 {
     display: inline-block;
     margin: 20px;
     text-align: center;
-    max-width: 45%; 
-    vertical-align: top;
+    max-width: 45%; /* Ensure they take up about half the space */
+    vertical-align: top; /* Align images side by side */
 }
 
 /* Image styling */
 .cake img {
-    width: 100%; /* Ensure responsive images */
-    max-width: 300px;
-    height: auto;
+    width: 100%; /* Make images responsive */
+    max-width: 300px; /* Limit max size of the images to 300px */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
 }
 
 /* Hover effect for images */
 .cake img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Styling for text under each image */
@@ -60,14 +60,15 @@ h1 {
     color: #555;
     margin-top: 10px;
     font-family: 'Poppins', sans-serif;
-    color: #ff6f61;
+    color: #ff6f61; /* Soft red-orange for text */
     font-weight: bold;
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
+    /* For smaller screens, stack the cakes vertically */
     .cake-container {
-        max-width: 90%;
+        max-width: 90%; /* Allow the cakes to take more width */
         margin: 10px 0;
     }
 }
@@ -80,6 +81,7 @@ h1 {
     right: 0;
     bottom: 0;
     background-image: url('https://www.transparenttextures.com/patterns/heart.png');
-    background-size: 50px 50px;
-    opacity: 0.5;
+    background-size: 50px 50px; /* Heart patterns for background */
+    opacity: 0.5; /* Subtle hearts */
 }
+
