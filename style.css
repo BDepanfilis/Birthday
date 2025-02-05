@@ -20,17 +20,19 @@ h1 {
 }
 
 /* Cake container styles */
-.cake {
+.cake-container {
     display: inline-block;
     margin: 20px;
     text-align: center;
+    max-width: 45%; /* Limits the width of each cake container */
+    vertical-align: top; /* Keeps the cakes aligned properly side by side */
 }
 
 /* Image styling */
 .cake img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+    width: 100%; /* Make images responsive */
+    max-width: 300px; /* Limit max size of the images to 300px */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out; /* Smooth hover effect */
@@ -51,19 +53,21 @@ h1 {
     font-weight: bold;
 }
 
-/* Styling for cake container that holds the images */
-.cake-container {
+/* Container that holds all the cakes */
+.cake-container-wrapper {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     padding: 20px;
     margin-top: 30px;
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .cake {
-        width: 100%;
+    /* For smaller screens, stack the cakes vertically and allow them to take full width */
+    .cake-container {
+        max-width: 90%; /* Allow the cakes to take more width */
         margin: 10px 0;
     }
 }
@@ -77,6 +81,5 @@ h1 {
     bottom: 0;
     background-image: url('https://www.transparenttextures.com/patterns/heart.png');
     background-size: 50px 50px; /* Heart patterns for background */
-    opacity: 0.1; /* Subtle hearts */
+    opacity: 0.5; /* Subtle hearts */
 }
-
