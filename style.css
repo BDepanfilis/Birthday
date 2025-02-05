@@ -6,8 +6,6 @@ body {
     background-color: #f8d5e0;
     color: #333;
     text-align: center;
-    background-image: url('https://www.transparenttextures.com/patterns/pale-pink-dots.png');
-    background-size: 20px 20px;
     overflow-x: hidden;
 }
 
@@ -71,15 +69,4 @@ h1 {
     }
 }
 
-/* Optional: hearts background */
-.heart-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://www.transparenttextures.com/patterns/heart.png');
-    background-size: 50px 50px;
-    opacity: 0.5;
-}
 
