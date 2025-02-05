@@ -23,31 +23,29 @@ function updateSelection(cake) {
   cake.selectCount++;
 }
 
-// Weighted random selection of cakes based on their selectCount
-function getRandomCakes() {
-  console.log("getRandomCakes is being called");
+// Elo rating system logic
+function updateElo(winner, loser) {
+  const K = 32; // Elo constant
+  let expectedWinner = 1 / (1 + Math.pow(10, (loser.elo - winner.elo) / 400));
+  let expectedLoser = 1 - expectedWinner;
 
-  let weightedCakes = [];
-  
-  // Create weighted list of cakes based on selectCount
-  cakes.forEach(cake => {
-    let weight = Math.pow(cake.selectCount + 1, 2); // Weight bias based on select count
-    for (let i = 0; i < weight; i++) {
-      weightedCakes.push(cake);
-    }
-  });
+  winner.elo += K * (1 - expectedWinner);
+  loser.elo += K * (0 - expectedLoser);
 
-  // Pick two random cakes from the weighted array
-  let cake1 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
-  let cake2 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
+  // Show new cakes after Elo update
+  showNewCakes();
+}
+
+// Function to display the next two cakes
+function showNewCakes() {
+  // Pick two random cakes from the list
+  let cake1 = cakes[Math.floor(Math.random() * cakes.length)];
+  let cake2 = cakes[Math.floor(Math.random() * cakes.length)];
 
   // Ensure the two cakes are not the same
   while (cake1 === cake2) {
-    cake2 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
+    cake2 = cakes[Math.floor(Math.random() * cakes.length)];
   }
-
-  console.log('Cake 1:', cake1);
-  console.log('Cake 2:', cake2);
 
   // Update the HTML to show the two cakes
   document.getElementById("cake1").innerHTML = `
@@ -64,37 +62,6 @@ function getRandomCakes() {
   document.getElementById("cake2").onclick = function() { updateElo(cake2, cake1); updateSelection(cake2); };
 }
 
-// Elo rating system logic
-function updateElo(winner, loser) {
-  const K = 32; // Elo constant
-  let expectedWinner = 1 / (1 + Math.pow(10, (loser.elo - winner.elo) / 400));
-  let expectedLoser = 1 - expectedWinner;
+// Initialize by displaying the first pair of cakes
+showNewCakes();
 
-  winner.elo += K * (1 - expectedWinner);
-  loser.elo += K * (0 - expectedLoser);
-
-  // Stop if a cake reaches a sufficient Elo threshold (e.g., 1500 Elo)
-  if (winner.elo >= 1500) {
-    displayWinner(winner); // Show the winner if a cake reaches 1500 Elo
-  } else {
-    getRandomCakes(); // Continue with the next matchup
-  }
-}
-
-function displayWinner(cake) {
-  // Update the current winner display
-  document.getElementById("currentWinner").innerHTML = `Current Winner: ${cake.name}`;
-
-  // Update the cake-container with the winner's image and a message
-  document.getElementById("cake-container").innerHTML = `
-    <h2>The Winner is: ${cake.name}</h2>
-    <img src="${cake.img}" alt="${cake.name}" />
-    <p>Congratulations! This cake has claimed victory!</p>
-  `;
-
-  // Disable the "Next" button after a winner is crowned (optional)
-  document.querySelector("button").disabled = true;
-}
-
-// Initialize by loading a random cake matchup
-getRandomCakes();
