@@ -19,7 +19,7 @@ let cakes = [
   { name: "Birthday Cake", elo: 1000, img: "images/Birthday_Cake.jpg" }
 ];
 
-// Function to update the Elo ratings
+// Function to update Elo ratings
 function updateElo(winner, loser) {
   const K = 32; // Elo constant
   let expectedWinner = 1 / (1 + Math.pow(10, (loser.elo - winner.elo) / 400));
@@ -41,37 +41,33 @@ function showNewCakes() {
 
   // Update the HTML to show the two cakes with images
   document.getElementById("cake1").innerHTML = `
-    <img src="${cake1.img}" alt="${cake1.name}" />
-    <p>${cake1.name}</p>
+    <div class="cake">
+      <img src="${cake1.img}" alt="${cake1.name}" />
+      <p>${cake1.name}</p>
+    </div>
   `;
   document.getElementById("cake2").innerHTML = `
-    <img src="${cake2.img}" alt="${cake2.name}" />
-    <p>${cake2.name}</p>
+    <div class="cake">
+      <img src="${cake2.img}" alt="${cake2.name}" />
+      <p>${cake2.name}</p>
+    </div>
   `;
 
   // Add click functionality for cake selection
   let cake1Element = document.getElementById("cake1");
   let cake2Element = document.getElementById("cake2");
 
-  // Disable clicking after selection to prevent double clicks
   cake1Element.onclick = function() {
     updateElo(cake1, cake2);
     showNewCakes(); // Show new cakes after selection
-    disableClicks(cake1Element, cake2Element);
   };
 
   cake2Element.onclick = function() {
     updateElo(cake2, cake1);
     showNewCakes(); // Show new cakes after selection
-    disableClicks(cake1Element, cake2Element);
   };
-}
-
-// Disable further clicking after selection
-function disableClicks(cake1Element, cake2Element) {
-  cake1Element.onclick = null;
-  cake2Element.onclick = null;
 }
 
 // Initialize by displaying the first pair of cakes
 showNewCakes();
+
