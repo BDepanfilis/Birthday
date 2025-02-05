@@ -76,14 +76,18 @@ function updateElo(winner, loser) {
   }
 }
 
-// Display the winner once it reaches a threshold
 function displayWinner(cake) {
+  // Display the winner's name dynamically
+  document.getElementById("currentWinner").innerHTML = `Current Winner: ${cake.name}`;
+  
+  // Update the cake-container with the winner's image and message
   document.getElementById("cake-container").innerHTML = `
-    <h2>Winner: ${cake.name}</h2>
+    <h2>The Winner is: ${cake.name}</h2>
     <img src="${cake.img}" alt="${cake.name}" />
-    <p>Congratulations! This cake is the winner!</p>
+    <p>Congratulations! This cake has claimed victory!</p>
   `;
-  document.querySelector("button").disabled = true; // Disable "Next" button
+
+  // Optionally, disable the "Next" button after a winner is crowned
+  document.querySelector("button").disabled = true;
 }
 
-getRandomCakes();
