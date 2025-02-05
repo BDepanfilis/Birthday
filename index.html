@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cake Chooser</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cake Battle</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Choose your favorite cake!</h1>
+  <h1>Choose Your Favorite Cake!</h1>
+  
+  <!-- Display cake 1 -->
+  <div id="cake1" class="cake-container">
+    <p>Select this cake!</p>
+  </div>
+  
+  <!-- Display cake 2 -->
+  <div id="cake2" class="cake-container">
+    <p>Select this cake!</p>
+  </div>
 
-    <div id="cake-container">
-        <!-- This is where the images will be injected dynamically -->
-        <div id="cake1"></div>
-        <div id="cake2"></div>
-    </div>
+  <!-- Button to load next cakes -->
+  <button onclick="getRandomCakes()">Next</button>
 
-    <button onclick="checkFinalWinner()">See the Final Winner</button>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
