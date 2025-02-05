@@ -1,46 +1,105 @@
 /* General body styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(to right, #f6d1b6, #f1f1f1);
     text-align: center;
+    color: #333;
 }
 
 /* Main heading style */
 h1 {
-    color: #333;
+    font-family: 'Dancing Script', cursive;
+    color: #ff6f61;
     margin-top: 50px;
-    font-size: 36px;
+    font-size: 48px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Cake container styles */
-.cake-container {
+.cake {
     display: inline-block;
     margin: 20px;
     text-align: center;
+    transition: transform 0.3s ease;
 }
 
 /* Image styling */
-.cake-container img {
-    width: 100%; /* Make images responsive */
-    max-width: 400px; /* Limit max size of the images */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners for a nice effect */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+.cake img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s forwards; /* Fade-in animation */
 }
 
-/* Styling for text under each image */
-.cake-container p {
-    font-size: 18px;
+/* Hover effect on cake images */
+.cake:hover img {
+    transform: scale(1.05);
+}
+
+/* Text under each image */
+.cake p {
+    font-size: 20px;
     color: #555;
     margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Next button styling */
+button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4d39;
+}
+
+button:disabled {
+    background-color: #d1d1d1;
+    cursor: not-allowed;
+}
+
+/* Container for cake images */
+.cake-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Fade-in effect for images */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .cake-container {
-        width: 100%; /* Make images stack in smaller screen sizes */
-        margin: 10px 0;
+    .cake {
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    h1 {
+        font-size: 36px;
     }
 }
+
