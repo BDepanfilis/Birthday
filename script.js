@@ -18,18 +18,18 @@ let cakes = [
   { name: "Birthday Cake", elo: 1000, img: "images/Birthday_Cake.jpg", selectCount: 0 }
 ];
 
-// Function to update the selection count and Elo when a cake is selected
+// Function to update the selection count when a cake is selected
 function updateSelection(cake) {
   cake.selectCount++;
-  // You can also update Elo here if you want, or only track selectCount for selection probability
 }
 
-// Weighted random selection
+// Weighted random selection of cakes based on their selectCount
 function getRandomCakes() {
-  // Create a weighted array of cakes based on their selectCount
   let weightedCakes = [];
+  
+  // Create weighted list of cakes based on selectCount
   cakes.forEach(cake => {
-    let weight = Math.pow(cake.selectCount + 1, 2); // Square to create bias
+    let weight = Math.pow(cake.selectCount + 1, 2); // Weight bias based on select count
     for (let i = 0; i < weight; i++) {
       weightedCakes.push(cake);
     }
@@ -39,12 +39,12 @@ function getRandomCakes() {
   let cake1 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
   let cake2 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
 
-  // Ensure they are not the same cake
+  // Ensure the two cakes are not the same
   while (cake1 === cake2) {
     cake2 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
   }
 
-  // Update the HTML with the correct image paths
+  // Update the HTML to show the two cakes
   document.getElementById("cake1").innerHTML = `
     <img src="${cake1.img}" alt="${cake1.name}" />
     <p>${cake1.name}</p>
@@ -54,14 +54,14 @@ function getRandomCakes() {
     <p>${cake2.name}</p>
   `;
 
-  // Add click events to choose cakes
+  // Add click functionality for cake selection
   document.getElementById("cake1").onclick = function() { updateElo(cake1, cake2); updateSelection(cake1); };
   document.getElementById("cake2").onclick = function() { updateElo(cake2, cake1); updateSelection(cake2); };
 }
 
 // Elo rating system logic
 function updateElo(winner, loser) {
-  const K = 32;
+  const K = 32; // Elo constant
   let expectedWinner = 1 / (1 + Math.pow(10, (loser.elo - winner.elo) / 400));
   let expectedLoser = 1 - expectedWinner;
 
@@ -70,24 +70,26 @@ function updateElo(winner, loser) {
 
   // Stop if a cake reaches a sufficient Elo threshold (e.g., 1500 Elo)
   if (winner.elo >= 1500) {
-    displayWinner(winner);
+    displayWinner(winner); // Show the winner if a cake reaches 1500 Elo
   } else {
-    getRandomCakes();
+    getRandomCakes(); // Continue with the next matchup
   }
 }
 
 function displayWinner(cake) {
-  // Display the winner's name dynamically
+  // Update the current winner display
   document.getElementById("currentWinner").innerHTML = `Current Winner: ${cake.name}`;
-  
-  // Update the cake-container with the winner's image and message
+
+  // Update the cake-container with the winner's image and a message
   document.getElementById("cake-container").innerHTML = `
     <h2>The Winner is: ${cake.name}</h2>
     <img src="${cake.img}" alt="${cake.name}" />
     <p>Congratulations! This cake has claimed victory!</p>
   `;
 
-  // Optionally, disable the "Next" button after a winner is crowned
+  // Disable the "Next" button after a winner is crowned (optional)
   document.querySelector("button").disabled = true;
 }
 
+// Initialize by loading a random cake matchup
+getRandomCakes();
