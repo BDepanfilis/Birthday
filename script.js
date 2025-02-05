@@ -50,14 +50,27 @@ function showNewCakes() {
   `;
 
   // Add click functionality for cake selection
-  document.getElementById("cake1").onclick = function() {
+  let cake1Element = document.getElementById("cake1");
+  let cake2Element = document.getElementById("cake2");
+
+  // Disable clicking after selection to prevent double clicks
+  cake1Element.onclick = function() {
     updateElo(cake1, cake2);
     showNewCakes(); // Show new cakes after selection
+    disableClicks(cake1Element, cake2Element);
   };
-  document.getElementById("cake2").onclick = function() {
+
+  cake2Element.onclick = function() {
     updateElo(cake2, cake1);
     showNewCakes(); // Show new cakes after selection
+    disableClicks(cake1Element, cake2Element);
   };
+}
+
+// Disable further clicking after selection
+function disableClicks(cake1Element, cake2Element) {
+  cake1Element.onclick = null;
+  cake2Element.onclick = null;
 }
 
 // Initialize by displaying the first pair of cakes
