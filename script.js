@@ -17,7 +17,6 @@ let cakes = [
   { name: "Chocolate Kahlua Cake", elo: 1000, img: "images/Chocolate_K.JPG" },
   { name: "Strawberry Shortcake", elo: 1000, img: "images/Strawberry_Shortcake.JPG" },
   { name: "Birthday Cake", elo: 1000, img: "images/Birthday_Cake.JPG" },
-  // Add more cakes as needed
 ];
 
 function getRandomCakes() {
@@ -30,9 +29,15 @@ function getRandomCakes() {
     cake2 = cakes[Math.floor(Math.random() * cakes.length)];
   }
 
-  // Update the HTML with the correct image paths
-  document.getElementById("cake1").innerHTML = `<img src="${cake1.img}" alt="${cake1.name}" />`;
-  document.getElementById("cake2").innerHTML = `<img src="${cake2.img}" alt="${cake2.name}" />`;
+  // Update the HTML with the correct image paths and cake names
+  document.getElementById("cake1").innerHTML = `
+    <img src="${cake1.img}" alt="${cake1.name}" />
+    <p>${cake1.name}</p>
+  `;
+  document.getElementById("cake2").innerHTML = `
+    <img src="${cake2.img}" alt="${cake2.name}" />
+    <p>${cake2.name}</p>
+  `;
 
   // Add click events to choose cakes
   document.getElementById("cake1").onclick = function() { updateElo(cake1, cake2); };
@@ -52,6 +57,9 @@ function updateElo(winner, loser) {
   // Display next cakes after Elo is updated
   getRandomCakes();
 }
+
+// Start with random cakes
+getRandomCakes();
 
 // Start with random cakes
 getRandomCakes();
