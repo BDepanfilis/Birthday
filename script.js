@@ -71,3 +71,4 @@ function showNewCakes() {
 // Initialize by displaying the first pair of cakes
 showNewCakes();
 
+
