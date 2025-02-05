@@ -23,40 +23,31 @@ function updateSelection(cake) {
   cake.selectCount++;
 }
 
+// Weighted random selection of cakes based on their selectCount
 function getRandomCakes() {
-  console.log('getRandomCakes is being called');
+  console.log("getRandomCakes is being called");
+
   let weightedCakes = [];
   
+  // Create weighted list of cakes based on selectCount
   cakes.forEach(cake => {
-    let weight = Math.pow(cake.selectCount + 1, 2);
+    let weight = Math.pow(cake.selectCount + 1, 2); // Weight bias based on select count
     for (let i = 0; i < weight; i++) {
       weightedCakes.push(cake);
     }
   });
 
+  // Pick two random cakes from the weighted array
   let cake1 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
   let cake2 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
 
+  // Ensure the two cakes are not the same
   while (cake1 === cake2) {
     cake2 = weightedCakes[Math.floor(Math.random() * weightedCakes.length)];
   }
 
   console.log('Cake 1:', cake1);
   console.log('Cake 2:', cake2);
-
-  // Update the HTML to show the cakes
-  document.getElementById("cake1").innerHTML = `
-    <img src="${cake1.img}" alt="${cake1.name}" />
-    <p>${cake1.name}</p>
-  `;
-  document.getElementById("cake2").innerHTML = `
-    <img src="${cake2.img}" alt="${cake2.name}" />
-    <p>${cake2.name}</p>
-  `;
-
-  document.getElementById("cake1").onclick = function() { updateElo(cake1, cake2); updateSelection(cake1); };
-  document.getElementById("cake2").onclick = function() { updateElo(cake2, cake1); updateSelection(cake2); };
-}
 
   // Update the HTML to show the two cakes
   document.getElementById("cake1").innerHTML = `
@@ -88,3 +79,22 @@ function updateElo(winner, loser) {
   } else {
     getRandomCakes(); // Continue with the next matchup
   }
+}
+
+function displayWinner(cake) {
+  // Update the current winner display
+  document.getElementById("currentWinner").innerHTML = `Current Winner: ${cake.name}`;
+
+  // Update the cake-container with the winner's image and a message
+  document.getElementById("cake-container").innerHTML = `
+    <h2>The Winner is: ${cake.name}</h2>
+    <img src="${cake.img}" alt="${cake.name}" />
+    <p>Congratulations! This cake has claimed victory!</p>
+  `;
+
+  // Disable the "Next" button after a winner is crowned (optional)
+  document.querySelector("button").disabled = true;
+}
+
+// Initialize by loading a random cake matchup
+getRandomCakes();
