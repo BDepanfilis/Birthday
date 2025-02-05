@@ -72,4 +72,5 @@ function updateElo(winner, loser) {
   if (winner.elo >= 1500) {
     displayWinner(winner); // Show the winner if a cake reaches 1500 Elo
   } else {
-    getRandomCakes(); //
+    getRandomCakes(); // Continue with the next matchup
+  }
