@@ -72,24 +72,4 @@ function updateElo(winner, loser) {
   if (winner.elo >= 1500) {
     displayWinner(winner); // Show the winner if a cake reaches 1500 Elo
   } else {
-    getRandomCakes(); // Continue with the next matchup
-  }
-}
-
-function displayWinner(cake) {
-  // Update the current winner display
-  document.getElementById("currentWinner").innerHTML = `Current Winner: ${cake.name}`;
-
-  // Update the cake-container with the winner's image and a message
-  document.getElementById("cake-container").innerHTML = `
-    <h2>The Winner is: ${cake.name}</h2>
-    <img src="${cake.img}" alt="${cake.name}" />
-    <p>Congratulations! This cake has claimed victory!</p>
-  `;
-
-  // Disable the "Next" button after a winner is crowned (optional)
-  document.querySelector("button").disabled = true;
-}
-
-// Initialize by loading a random cake matchup
-getRandomCakes();
+    getRandomCakes(); //
