@@ -21,7 +21,7 @@ let cakes = [
 
 // Function to update Elo ratings
 function updateElo(winner, loser) {
-  const K = 32; // Elo constant
+  const K = 64; // Elo constant
   let expectedWinner = 1 / (1 + Math.pow(10, (loser.elo - winner.elo) / 400));
   let expectedLoser = 1 - expectedWinner;
 
