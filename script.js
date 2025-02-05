@@ -21,7 +21,7 @@ let cakes = [
 
 // Function to update Elo ratings
 function updateElo(winner, loser) {
-  const K = 64; // Elo constant
+  const K = 32; // Elo constant
   let expectedWinner = 1 / (1 + Math.pow(10, (loser.elo - winner.elo) / 400));
   let expectedLoser = 1 - expectedWinner;
 
@@ -29,8 +29,20 @@ function updateElo(winner, loser) {
   loser.elo += K * (0 - expectedLoser);
 }
 
-// Function to display the next two cakes
+// Function to display the next two cakes or stop the game if one reaches sufficient Elo
 function showNewCakes() {
+  // Set the Elo threshold for the "ultimate cake"
+  const ELO_THRESHOLD = 1250;
+
+  // If any cake's Elo exceeds the threshold, end the game
+  let topCake = cakes.find(cake => cake.elo >= ELO_THRESHOLD);
+  if (topCake) {
+    // Stop the game by not showing new cakes
+    displayWinner(topCake);
+    return;
+  }
+
+  // Randomly select two different cakes
   let cake1 = cakes[Math.floor(Math.random() * cakes.length)];
   let cake2 = cakes[Math.floor(Math.random() * cakes.length)];
 
@@ -66,6 +78,22 @@ function showNewCakes() {
     updateElo(cake2, cake1);
     showNewCakes(); // Show new cakes after selection
   };
+}
+
+// Function to display the winner when a cake reaches the Elo threshold
+function displayWinner(cake) {
+  // Stop the game and show the winning cake
+  document.body.innerHTML = `
+    <div class="cake-container-wrapper">
+      <div class="cake-container">
+        <img src="${cake.img}" alt="${cake.name}" />
+        <p>${cake.name}</p>
+      </div>
+    </div>
+    <p style="font-size: 24px; color: #ff6f61; font-family: 'Poppins', sans-serif; font-weight: bold;">
+      Congratulations Hannah on your 22nd birthday! 🎉🎂
+    </p>
+  `;
 }
 
 // Initialize by displaying the first pair of cakes
