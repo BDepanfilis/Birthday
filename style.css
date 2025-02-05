@@ -15,14 +15,14 @@ h1 {
 }
 
 /* Cake container styles */
-.cake {
+.cake-container {
     display: inline-block;
     margin: 20px;
     text-align: center;
 }
 
 /* Image styling */
-.cake img {
+.cake-container img {
     width: 100%; /* Make images responsive */
     max-width: 400px; /* Limit max size of the images */
     height: auto; /* Maintain aspect ratio */
@@ -31,7 +31,7 @@ h1 {
 }
 
 /* Styling for text under each image */
-.cake p {
+.cake-container p {
     font-size: 18px;
     color: #555;
     margin-top: 10px;
@@ -39,17 +39,8 @@ h1 {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .cake {
+    .cake-container {
         width: 100%; /* Make images stack in smaller screen sizes */
         margin: 10px 0;
     }
-}
-
-/* Styling for container that holds all the cakes */
-.cake-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-    margin-top: 30px;
 }
