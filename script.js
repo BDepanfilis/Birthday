@@ -10,13 +10,13 @@ let cakes = [
   { name: "Chocolate Tiramisu Cake", elo: 1000, img: "images/Chocolate_Tiramisu.JPG" },
   { name: "Thai Dream Cake", elo: 1000, img: "images/Thai_Dream.JPG" },
   { name: "Lemon Merengue Cake", elo: 1000, img: "images/Lemon_Merengue.JPG" },
-  { name: "Red Velvet Cake", elo: 1000, img: "images/Red_Velvet2.JPG" },
-  { name: "Double Chocolate Mocha Cake", elo: 1000, img: "images/Double_Chocolate_Mocha.JPG" },
-  { name: "Tuxedo Cake", elo: 1000, img: "images/Tuxedo.JPG" },
-  { name: "Funfetti Cake", elo: 1000, img: "images/Funfetti.JPG" },
-  { name: "Chocolate Kahlua Cake", elo: 1000, img: "images/Chocolate_K.JPG" },
-  { name: "Strawberry Shortcake", elo: 1000, img: "images/Strawberry_Shortcake.JPG" },
-  { name: "Birthday Cake", elo: 1000, img: "images/Birthday_Cake.JPG" },
+  { name: "Red Velvet Cake", elo: 1000, img: "images/Red_Velvet2.jpg" },
+  { name: "Double Chocolate Mocha Cake", elo: 1000, img: "images/Double_Chocolate_Mocha.jpg" },
+  { name: "Tuxedo Cake", elo: 1000, img: "images/Tuxedo.jpg" },
+  { name: "Funfetti Cake", elo: 1000, img: "images/Funfetti.jpg" },
+  { name: "Chocolate Kahlua Cake", elo: 1000, img: "images/Chocolate_K.jpg" },
+  { name: "Strawberry Shortcake", elo: 1000, img: "images/Strawberry_Shortcake.jpg" },
+  { name: "Birthday Cake", elo: 1000, img: "images/Birthday_Cake.jpg" },
 ];
 
 function getRandomCakes() {
