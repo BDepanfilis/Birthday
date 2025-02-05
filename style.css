@@ -20,7 +20,7 @@ h1 {
     text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
 }
 
-/* Cake container wrapper to hold both cakes side-by-side */
+/* Cake container wrapper to keep cakes side by side */
 .cake-container-wrapper {
     display: flex;
     justify-content: center;
@@ -37,6 +37,8 @@ h1 {
     text-align: center;
     max-width: 45%;
     vertical-align: top;
+    position: relative;  /* Ensure cakes are stacked side by side */
+    box-sizing: border-box;
 }
 
 /* Image styling */
@@ -47,6 +49,7 @@ h1 {
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;  /* Make the images clickable */
 }
 
 /* Hover effect for images */
@@ -81,5 +84,6 @@ h1 {
     bottom: 0;
     background-image: url('https://www.transparenttextures.com/patterns/heart.png');
     background-size: 50px 50px;
-    opacity: 1;
+    opacity: 0.5;
 }
+
