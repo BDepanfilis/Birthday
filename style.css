@@ -8,6 +8,7 @@ body {
     text-align: center;
     background-image: url('https://www.transparenttextures.com/patterns/pale-pink-dots.png'); /* Optional cute heart pattern */
     background-size: 20px 20px; /* Small dots pattern for a sweet feel */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Main heading style */
@@ -19,13 +20,23 @@ h1 {
     text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); /* Soft shadow for a dreamy effect */
 }
 
+/* Cake container wrapper to hold both cakes side-by-side */
+.cake-container-wrapper {
+    display: flex;
+    justify-content: center; /* Centers cakes horizontally */
+    align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap in case of small screen sizes */
+    padding: 20px;
+    margin-top: 30px;
+}
+
 /* Cake container styles */
 .cake-container {
     display: inline-block;
     margin: 20px;
     text-align: center;
-    max-width: 45%; /* Limits the width of each cake container */
-    vertical-align: top; /* Keeps the cakes aligned properly side by side */
+    max-width: 45%; /* Ensure they take up about half the space */
+    vertical-align: top; /* Align images side by side */
 }
 
 /* Image styling */
@@ -53,19 +64,9 @@ h1 {
     font-weight: bold;
 }
 
-/* Container that holds all the cakes */
-.cake-container-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    margin-top: 30px;
-}
-
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    /* For smaller screens, stack the cakes vertically and allow them to take full width */
+    /* For smaller screens, stack the cakes vertically */
     .cake-container {
         max-width: 90%; /* Allow the cakes to take more width */
         margin: 10px 0;
