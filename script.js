@@ -19,6 +19,9 @@ let cakes = [
   { name: "Birthday Cake", elo: 1000, img: "images/Birthday_Cake.jpg", selected: 0 }
 ];
 
+// Elo threshold to end the game
+const ELO_THRESHOLD = 1200;
+
 // Function to update Elo ratings
 function updateElo(winner, loser) {
   const K = 100; // Elo constant for higher weight
@@ -32,6 +35,13 @@ function updateElo(winner, loser) {
 
 // Function to show new cakes and adjust selection probabilities
 function showNewCakes() {
+  // Check if any cake has reached the Elo threshold
+  let winnerCake = cakes.find(cake => cake.elo >= ELO_THRESHOLD);
+  if (winnerCake) {
+    displayWinner(winnerCake);
+    return; // Stop the game if a winner is found
+  }
+
   // Calculate selection probabilities (weights based on selection count and Elo)
   let weightedCakes = cakes.map(cake => {
     // Increase the probability of selecting cakes that have been picked more often
@@ -101,23 +111,22 @@ function selectCake(weightedCakes) {
   }
 }
 
-// Function to display the winner when a cake reaches the Elo threshold
-function displayWinner(cake) {
-  // Stop the game and show the winning cake
-  document.body.innerHTML = `
-    <div class="cake-container-wrapper">
-      <div class="cake-container">
-        <img src="${cake.img}" alt="${cake.name}" />
-        <p>${cake.name}</p>
-      </div>
+// Display the winner when they reach the Elo threshold
+function displayWinner(winnerCake) {
+  // Display the winning cake
+  document.getElementById("cake1").innerHTML = `
+    <div class="cake">
+      <img src="${winnerCake.img}" alt="${winnerCake.name}" />
+      <p>${winnerCake.name}</p>
     </div>
-    <p style="font-size: 24px; color: #ff6f61; font-family: 'Poppins', sans-serif; font-weight: bold;">
-      Congratulations Hannah on your 22nd birthday! 🎉🎂
-    </p>
+  `;
+
+  // Display the congratulatory birthday message
+  document.getElementById("cake2").innerHTML = `
+    <p>Congratulations Hannah on your 22nd birthday! 🎉🎂</p>
   `;
 }
 
 // Initialize by displaying the first pair of cakes
 showNewCakes();
-
 
