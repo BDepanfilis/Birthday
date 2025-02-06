@@ -32,7 +32,7 @@ function updateElo(winner, loser) {
 // Function to display the next two cakes or stop the game if one reaches sufficient Elo
 function showNewCakes() {
   // Set the Elo threshold for the "ultimate cake"
-  const ELO_THRESHOLD = 1250;
+  const ELO_THRESHOLD = 1200;
 
   // If any cake's Elo exceeds the threshold, end the game
   let topCake = cakes.find(cake => cake.elo >= ELO_THRESHOLD);
